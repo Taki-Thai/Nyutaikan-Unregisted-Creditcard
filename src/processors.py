@@ -143,6 +143,9 @@ def process_unregistered_card(service, gc):
     )
 
     if output_old.width > 0:
+        output_old = output_old.with_columns(
+            pl.col("金額").cast(pl.Int64, strict=False),
+        )
         existing_keys = set(output_old["請求書番号"].to_list())
         df_new_rows = df_output.filter(
             ~pl.col("請求書番号").is_in(existing_keys)
