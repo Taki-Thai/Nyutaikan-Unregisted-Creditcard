@@ -1,5 +1,5 @@
 # 入退館カード未収金
-CARD_OUTPUT_ID = "1xxfcsb2vuEE6iJPFNFwzx-O0vMKawgPY5dQzIG8xmb8"  # クレジットカード未登録
+CARD_OUTPUT_ID = "1h9uUkwhNFHqH4vRp9Xe8UA2iY4NkYi_tbo3kWq0RPiQ"  # クレジットカード未登録
 CARD_SHEET_ID  = "1-sIWBRaM-IC19Qw2Y2LKU2yxU_vHskflAsifqJjuh3M"  # 対象企業リスト
 CARD_INPUT_FOLDER_ID = "1ihs8B3VF-5vfET29oqjAE-3OqyJsA0Uj"  
 CARD_INPUT_FILENAME  = "電子名札・入退館カードの請求書.csv"
