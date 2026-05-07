@@ -3,7 +3,7 @@ import pandas as pd
 from gspread_dataframe import get_as_dataframe
 from src.drive_utils import write_to_sheet
 from src.loaders import load_ntk_contract, load_card_ng_offices
-from config.setting import CARD_OUTPUT_ID, CARD_OUTPUT_SHEET
+from config.settings import CARD_OUTPUT_ID, CARD_OUTPUT_SHEET
 
 def process_unregistered_card(service, gc):
 
