@@ -1,1 +1,38 @@
 
+name: Daily Data Pipeline
+
+on:
+  schedule:
+    - cron: "23 21 * * *"   # 23:00 UTC = 08:00 JST
+  workflow_dispatch:        # cho phép chạy thủ công khi cần
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Check secret exists
+        run: |
+          if [ -z "$GOOGLE_SERVICE_ACCOUNT_JSON" ]; then
+            echo "❌ Secret is EMPTY"
+          else
+            echo "✅ Secret is set (length: ${#GOOGLE_SERVICE_ACCOUNT_JSON})"
+          fi
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+
+      - name: Run pipeline
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: python main.py
