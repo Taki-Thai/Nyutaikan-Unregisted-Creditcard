@@ -1,13 +1,11 @@
 import polars as pl
 import pandas as pd
 from gspread_dataframe import get_as_dataframe
-from src.drive_utils import get_drive_service, get_sheets_client, write_to_sheet
+from src.drive_utils import write_to_sheet
 from src.loaders import load_ntk_contract, load_card_ng_offices
 from config.setting import CARD_OUTPUT_ID, CARD_OUTPUT_SHEET
 
-def process_unregistered_card():
-    service = get_drive_service()
-    gc      = get_sheets_client()
+def process_unregistered_card(service, gc):
 
     # =====================
     # 0. Load sheet cũ
