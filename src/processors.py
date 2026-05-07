@@ -98,6 +98,7 @@ def process_unregistered_card(service, gc):
             "有効期限":  "契約期間",
         })
         .filter(~pl.col("会社名").str.contains("VNファーマ"))
+        .filter(pl.col("会社名") != "支払いテスト株式会社")
     )
 
     # =====================
@@ -160,5 +161,7 @@ def process_unregistered_card(service, gc):
         .sort("請求書番号")
     )
 
-    write_to_sheet(gc, CARD_OUTPUT_ID, CARD_OUTPUT_SHEET, output_final.to_pandas())
+    df_final_pd = output_final.to_pandas()
+    df_final_pd["入金日"] = df_final_pd["入金日"].fillna("").replace("nan", "")
+    write_to_sheet(gc, CARD_OUTPUT_ID, CARD_OUTPUT_SHEET, df_final_pd)
     print("✅ process_unregistered_card hoàn thành")
