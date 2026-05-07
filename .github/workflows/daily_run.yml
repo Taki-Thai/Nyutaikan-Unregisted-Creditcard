@@ -3,7 +3,7 @@ name: Daily Data Pipeline
 
 on:
   schedule:
-    - cron: "23 21 * * *"   # 23:00 UTC = 08:00 JST
+    - cron: "23 22 * * *"   # 23:00 UTC = 08:00 JST
   workflow_dispatch:        # cho phép chạy thủ công khi cần
 
 jobs:
