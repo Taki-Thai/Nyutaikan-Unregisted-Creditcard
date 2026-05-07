@@ -2,7 +2,7 @@ import os, io
 import pandas as pd
 from gspread_dataframe import get_as_dataframe
 from src.drive_utils import list_files_in_folder, download_file
-from config.setting import (
+from config.settings import (
     CARD_INPUT_FOLDER_ID,
     CARD_INPUT_FILENAME,
     CARD_TMP_DIR,
